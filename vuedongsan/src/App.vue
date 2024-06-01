@@ -1,4 +1,4 @@
-<!-- 테스트완료입니다. 굿입니다~~ 변경하겠습니다 -->
+<!-- 테스트완료입니다. 굿입니다~~ 변경하겠습니다. 라스트 변경입니다 -->
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Welcome to Your Vue.js App" />
