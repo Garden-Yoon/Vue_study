@@ -3,17 +3,19 @@ script 안에는 JS 짜고
 style 안에는 CSS를 짠다 -->
 <template>
   <div>
-    <h4>ㅇㅇ 원룸</h4>
+    <!-- 바뀌지 않는 데이터들은 바인딩할 필요가 없다 -->
+    <!-- <h4>ㅇㅇ 원룸</h4> -->
+    <h4>{{ menus[0] }}</h4>
     <!-- {{ 콧수염 안에 데이터 이름을 기입}}
            밑에 있는 데이터가 연결됨  -->
     <p>{{ price1 }} 만원</p>
   </div>
   <div>
-    <h4>ㅁㅁ 원룸</h4>
+    <h4>{{ menus[1] }}</h4>
     <p>0000 만원</p>
   </div>
   <div>
-    <h4>ㅂㅂ 원룸</h4>
+    <h4>{{ menus[2] }}</h4>
     <p>0000 만원</p>
   </div>
 </template>
@@ -25,12 +27,14 @@ style 안에는 CSS를 짠다 -->
 
 export default {
   name: 'App',
+  // data 안의 내용이 변경되면 관련된 HTML에도 자동으로 렌더링됨
   data() {
     return {
       // 데이터는 object 자료로 저장한다 (작명 : 저장할 값)
       price1: 60,
       price2: 70,
       price3: 80,
+      menus: ['건대 앞 원룸', '세종대 앞 원룸', '한양대 앞 원룸'],
     };
   },
   components: {},
