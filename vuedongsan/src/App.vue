@@ -1,42 +1,58 @@
 <!-- template 안에는 html을 짜고
-script 안에는 JS 짜고
-style 안에는 CSS를 짠다 -->
+  script 안에는 JS 짜고
+  style 안에는 CSS를 짠다 -->
 <template>
   <div class="menu">
     <!--
-    <a>Home</a>
-    <a>about</a>
-    <a>products</a> -->
+        <a>Home</a>
+        <a>about</a>
+        <a>products</a> -->
+
+    <!-- 바뀌지 않는 데이터들은 바인딩할 필요가 없다 -->
+    <!-- <h4>ㅇㅇ 원룸</h4> -->
+    <!-- 객체로 데이터 연결 -->
+    <!-- <h4>{{ menus[0] }}</h4> -->
 
     <!-- 반복적인 HTML태그 축약 가능 : 반복문 사용 -->
     <!-- <태그 v-for="작명 in 횟수(혹은 배열/객체)" :key="작명">
-       : 태그를 (횟수나 배열/객체의 데이터 만큼) 반복해서 작성
-       : ':key'는 반드시 기입, 반복문 돌린 요소를 컴퓨터가 구분한다  -->
+          : 태그를 (횟수나 배열/객체의 데이터 만큼) 반복해서 작성
+          : ':key'는 반드시 기입, 반복문 돌린 요소를 컴퓨터가 구분한다  -->
     <a v-for="menu in menus" :key="menu">{{ menu }}</a>
   </div>
 
-  <div v-for="(a, i) in products" :key="i">
-    <!-- <h4>{{ products[i] }}</h4> -->
-    <h4>{{ a }}</h4>
-    <p>{{ prices[i] }} 만원</p>
-  </div>
+  <!-- <div v-for="(a, i) in products" :key="i"> -->
+  <!-- <h4>{{ products[i] }}</h4> -->
+  <!-- <h4>{{ a }}</h4> -->
+  <!-- <p>{{ prices[i] }} 만원</p> -->
+  <!-- </div> -->
 
-  <!-- 바뀌지 않는 데이터들은 바인딩할 필요가 없다 -->
-  <!-- <h4>ㅇㅇ 원룸</h4> -->
-  <!-- 객체로 데이터 연결 -->
-  <!-- <h4>{{ menus[0] }}</h4> -->
   <!-- {{ 콧수염 안에 데이터 이름을 기입}}
            밑에 있는 데이터가 연결됨  -->
-  <!-- <p>{{ price }} 만원</p>
+  <div>
+    <h4>{{ products[0] }}</h4>
+    <p>{{ prices[0] }} 만원</p>
+    <!-- 버튼 클릭 시 자바스크립트 실행하려면 onClick="" -->
+    <!-- vue 방식은 v-on:이벤트="" , v-on:은 @로 축약 가능 -->
+    <!-- reportCount++ : reportCount 값을 1개 더해줌
+         (reportCount += 1 혹은 reportCount = reportCount+1 과 같다) -->
+    <!-- <button @click="reportCount++">허위매물 신고</button> -->
+
+    <!-- 이벤트에 자바스크립트의 함수를 연결 가능함. 함수명만 기입 -->
+    <button @click="reportCount[0]++">허위매물 신고</button>
+    <span> 신고 수 : {{ reportCount[0] }}</span>
   </div>
   <div>
     <h4>{{ products[1] }}</h4>
-    <p>0000 만원</p>
+    <p>{{ prices[1] }} 만원</p>
+    <button @click="reportCount[1]++">허위매물 신고</button>
+    <span> 신고 수 : {{ reportCount[1] }}</span>
   </div>
   <div>
     <h4>{{ products[2] }}</h4>
-    <p>0000 만원</p>
-  </div> -->
+    <p>{{ prices[2] }} 만원</p>
+    <button @click="reportCount[2]++">허위매물 신고</button>
+    <span> 신고 수 : {{ reportCount[2] }}</span>
+  </div>
 </template>
 
 <script>
@@ -53,7 +69,14 @@ export default {
       menus: ['Home', 'products', 'menu'],
       prices: ['60만원', '70만원', '80만원'],
       products: ['건대 앞 원룸', '세종대 앞 원룸', '한양대 앞 원룸'],
+      reportCount: [0, 0, 0],
     };
+  },
+  // vue에서 함수 만들고 싶을때는 data 뒤에 methods:{}를 만든다
+  methods: {
+    increase() {
+      this.reportCount += 1;
+    },
   },
   components: {},
 };
