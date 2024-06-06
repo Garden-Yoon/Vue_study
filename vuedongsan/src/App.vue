@@ -38,13 +38,17 @@
            밑에 있는 데이터가 연결됨  -->
   <div>
     <!-- 이미지 넣는 법 : <img src="이미지경로"> -->
-    <img
+    <!-- <img
       src="https://cdn.ggumim.co.kr/cache/star/600/20190103195414wob5asyPJA.jpg"
       class="room-img"
-    />
+    /> -->
+    <img :src="onerooms[0].image" class="room-img" />
     <!-- 상품명 클릭 시 모달창상태를 true로 변경 -->
-    <h4 @click="modalStatus = true">{{ products[0] }}</h4>
-    <p>{{ prices[0] }} 만원</p>
+    <h4 @click="modalStatus = true">{{ onerooms[0].title }}</h4>
+    <p>{{ onerooms[0].price }} 원</p>
+
+    <!-- for문으로 구현해보자!! -->
+
     <!-- 버튼 클릭 시 자바스크립트 실행하려면 onClick="" -->
     <!-- vue 방식은 v-on:이벤트="" , v-on:은 @로 축약 가능 -->
     <!-- reportCount++ : reportCount 값을 1개 더해줌
@@ -81,13 +85,14 @@
 // 데이터 바인딩 : JS데이터를 HTML에 꽂아넣는 문법
 // 기존 JS : document.getElementById().innerHTML = ??
 // Vue : 데이터를 data() {return _{여기에 데이터 보관}}안에 넣는다
-
+import data from './assets/oneroom.js';
 export default {
   name: 'App',
   // data 안의 내용이 변경되면 관련된 HTML에도 자동으로 렌더링됨
   data() {
     return {
       // 데이터는 object 자료로 저장한다 (작명 : 저장할 값)
+      onerooms: data,
       menus: ['Home', 'products', 'menu'],
       prices: ['60만원', '70만원', '80만원'],
       products: ['건대 앞 원룸', '세종대 앞 원룸', '한양대 앞 원룸'],
